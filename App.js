@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, Button} from 'react-native';
 import { TextInput } from 'react-native-web';
 import * as Clipboard from 'expo-clipboard';
 
+//git test!!!!!!!!!!!!!!!!!!!!!!
+
 //functions to encrypt text by shifting with a caesar cipher, parameters the text to be ciphered, and the shift key
 export default function App() {
   const [message, setMessage] = useState('')
