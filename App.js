@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, Button} from 'react-native';
 import { TextInput } from 'react-native-web';
 import * as Clipboard from 'expo-clipboard';
 
-//git test!!!!!!!!!!!!!!!!!!!!!!
 
 //functions to encrypt text by shifting with a caesar cipher, parameters the text to be ciphered, and the shift key
 export default function App() {
@@ -23,7 +22,7 @@ export default function App() {
       return;
     }
     for (let i=0; i < text.length; i++){
-      if ((text.charCodeAt(i) + accShift == text.charCodeAt(i)) && !(accShift == 0)){
+      if ((text.charCodeAt(i) + accShift == text.charCodeAt(i)) && (accShift != 0)){
         setCiphered('You must enter a number for your key!')
         //exits function if user input for shift is not a number.
         return; 
