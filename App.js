@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, Image, Button} from 'react-native';
 import { TextInput } from 'react-native-web';
-import * as Clipboard from 'expo-clipboard';
 
 //More testing
 
