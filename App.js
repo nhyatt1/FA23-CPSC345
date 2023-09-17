@@ -14,6 +14,11 @@ export default function App() {
   let cipheredText = ''
   let accShift = 0
 
+  function isValidKey(key) {
+    const parsedKey = parseInt(key, 10);
+    return !isNaN(parsedKey) && Number.isInteger(parsedKey);
+  }
+
   function enCipher(text, shift){
     //encrypts via caesar cipher
     accShift = shift % 26
@@ -133,10 +138,12 @@ export default function App() {
 
       <View style={{flexDirection: 'row', marginTop: 10}}>
         <Button title='Encrypt' style={{marginRight: 10}} 
-        onPress={() => enCipher(message, shift)}/>
+        onPress={() => enCipher(message, shift)}
+        disabled={!isValidKey(key)}/>
         &nbsp;&nbsp;&nbsp;
         <Button title='Decrypt' style={{marginLeft: 10}} 
-        onPress={() => deCipher(message, shift)}/>
+        onPress={() => deCipher(message, shift)}
+        disabled={!isValidKey(key)}/>
       </View>
         <Text>Your message will appear here: {ciphered}</Text>
     </View>
