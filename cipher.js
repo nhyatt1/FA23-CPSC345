@@ -13,7 +13,6 @@ export default function CipherScreen({ navigation }){
   const [ciphered, setCiphered] = useState('');
   const dispatch = useDispatch();
   const numCiphered = useSelector((state) => state.history.numCiphered);
-
   
   let accShift = 0;
 
@@ -118,7 +117,7 @@ export default function CipherScreen({ navigation }){
             console.log("temp is: " + temp);
             dispatch(addMessages(
               {
-                id: numCiphered + 1,
+                id: numCiphered,
                 message: message,
                 shift: shift,
                 type:"Encryption",
@@ -136,7 +135,7 @@ export default function CipherScreen({ navigation }){
             console.log("temp is: " + temp);
             dispatch(addMessages(
               {
-                id: numCiphered + 1,
+                id: numCiphered,
                 message: message,
                 shift: shift,
                 type:"Decryption",
