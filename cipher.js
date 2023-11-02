@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Text, View, Image, Button, TextInput } from 'react-native';
 import { styles } from './styles.js';
 import { useDispatch, useSelector } from 'react-redux';
-import { numCipheredIncrement, addMessages, clearMessages, numCipheredReset } from './slices.js';
+import { numCipheredIncrement, addMessages } from './slices.js';
 //functions to encrypt text by shifting with a caesar cipher, parameters the text to be ciphered, and the shift key
 
-export default function CipherScreen({ navigation }){
+export default function CipherScreen({navigation}){
   
   const [message, setMessage] = useState('');
   const [key, setKey] = useState('0');
@@ -98,23 +98,22 @@ export default function CipherScreen({ navigation }){
       <Image style={{resizeMode: 'contain', width: 300, height: 300, marginBottom: 25}} 
       source={require('./assets/Caesar.png')}/>
         <View style={{marginBottom: 10}}>
-          <TextInput placeholder= 'Input your message to encrypt/decrypt here.' 
-          style={{width: 450, height: 25, padding: '8', backgroundColor: '#857b69', color: 'white'}}
+          <TextInput placeholder= 'Input your message to cipher.' 
+          style={{width: 300, height: 25, backgroundColor: '#857b69', color: 'white'}}
           onChangeText={text => setMessage(text)}
           />
         </View> 
         <View style={{marginBottom: 10}}>
-        <TextInput placeholder= 'Enter your encryption key here, you must enter a number!' 
-        style={{width: 450, height: 25, padding: '8', backgroundColor: '#857b69', color: 'white'}}
-        onChangeText={text => setKey(text)}
-        />
+          <TextInput placeholder= 'Enter your encryption key (1-25).' 
+          style={{width: 300, height: 25, backgroundColor: '#857b69', color: 'white'}}
+          onChangeText={text => setKey(text)}
+          />
         </View>   
         <View style={{flexDirection: 'row', marginTop: 10}}>
           <Button title='Encrypt' style={{marginRight: 10}} 
           onPress={() => {
             setCiphered(caesarCipher(message, shift, 1));
             let temp = caesarCipher(message, shift, 1);
-            console.log("temp is: " + temp);
             dispatch(addMessages(
               {
                 id: numCiphered,
@@ -127,12 +126,11 @@ export default function CipherScreen({ navigation }){
             dispatch(numCipheredIncrement());
           }}
           disabled={!isValidKey(key) || message == ''}/>
-          &nbsp;&nbsp;&nbsp;
+
           <Button title='Decrypt' style={{marginLeft: 10}} 
           onPress={() => {
             setCiphered(caesarCipher(message, shift, -1));
             let temp = caesarCipher(message, shift, -1)
-            console.log("temp is: " + temp);
             dispatch(addMessages(
               {
                 id: numCiphered,
